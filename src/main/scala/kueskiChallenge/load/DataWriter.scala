@@ -11,11 +11,16 @@ class DataWriter {
   }
 
   def writeInCSV(data: DataFrame, ticker: String = "All"): Unit = {
-    data.write.mode(SaveMode.Overwrite).csv(outputFolder + "csv/" + ticker + "-MovingAverage")
+    data.write
+        .mode(SaveMode.Overwrite)
+        .option("header", "true")
+        .csv(outputFolder + "csv/" + ticker + "-MovingAverage")
   }
 
   def writeInParquet(data: DataFrame, ticker: String = "All"): Unit = {
-    data.write.mode(SaveMode.Overwrite).parquet(outputFolder + "parquet/" + ticker + "-MovingAverage")
+    data.write
+        .mode(SaveMode.Overwrite)
+        .parquet(outputFolder + "parquet/" + ticker + "-MovingAverage")
   }
 
 }
