@@ -19,7 +19,7 @@ class HistoryDataTransform {
     movingAverageDF
   }
 
-  def movingAverageForAllData(historyDF: DataFrame, ticker: String, windowSize: Long): DataFrame = {
+  def movingAverageForAllData(historyDF: DataFrame, windowSize: Long): DataFrame = {
     val window = Window
       .partitionBy(col("ticker"))
       .orderBy(col("date").cast("timestamp").cast("long"))
